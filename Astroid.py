@@ -318,8 +318,8 @@ meteor_list = ["asteroids01.png", "asteroids02.png", "asteroids03.png",
 for img in meteor_list:
     meteor_images.append(pygame.image.load(path.join(asteroids_folder, img)).convert())
 powerup_images = {}
-powerup_images['shield'] = pygame.image.load(path.join(img_folder, 'shield_gold.png')).convert()
-powerup_images['gun'] = pygame.image.load(path.join(img_folder, 'bolt_gold.png')).convert()
+powerup_images['shield'] = pygame.image.load(path.join(img_folder, 'PowerUps/shield_gold.png')).convert()
+powerup_images['gun'] = pygame.image.load(path.join(img_folder, 'PowerUps/bolt_gold.png')).convert()
 # /Images======================================================End========================
 
 # Explosions==================================================Start====================
