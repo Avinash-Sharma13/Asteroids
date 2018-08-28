@@ -16,6 +16,7 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 Olive = (128, 128, 0)
+BLUEE = (0,126,192)
 
 # PyGame Initialization
 pygame.init()
@@ -66,7 +67,7 @@ def draw_shield_bar(surf, x,y,percentage):
 def draw_lives(surf, x,y, lives, img):
     for i in range(lives):
         img_rect = img.get_rect()
-        img.set_colorkey(WHITE)
+        img.set_colorkey(BLACK)
         img_rect.x = x + 30 * i
         img_rect.y = y
         surf.blit(img, img_rect)
@@ -97,17 +98,17 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # Player Initialization
         self.image =pygame.transform.scale(player_img,(35, 35))  # Player Image
-        self.image.set_colorkey(WHITE)  # So that black boundries of player rect don't show
+        self.image.set_colorkey(BLACK)  # So that black boundries of player rect don't show
         self.rect = self.image.get_rect()  # Initialization of player rect
         self.radius = int(self.rect.width/2 - 4)
         # pygame.draw.circle(self.image, RED, self.rect.center, self.radius)
-        self.rect.centerx = WIDTH/2
-        self.rect.bottom = HEIGHT -10
+        self.rect.centerx = WIDTH / 2
+        self.rect.bottom = HEIGHT - 10
         self.x_speed= 0
         self.shield = 100
-        self.shoot_delay = 250
+        self.shoot_delay = 450
         self.last_shot = pygame.time.get_ticks()
-        self.lives = 4
+        self.lives = 3
         self.hidden = False
         self.hide_timer = pygame.time.get_ticks()
         self.power = 1
@@ -227,7 +228,7 @@ class Mob(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale(laser_img,(10,35))
+        self.image = pygame.transform.scale(laser_img, (10, 35))
         self.image.set_colorkey(WHITE)
         # self.image = pygame.Surface((10,20))
         # self.image.fill(RED)
@@ -292,11 +293,15 @@ class Powerup(pygame.sprite.Sprite):
 # -----------------------------------Graphics / Assets ---------------------------------------------
 
 # Images===================================================End========================
-backgrounds = random.choice(["Backgrounds/bg1.png", "Backgrounds/bg2.png", "Backgrounds/bg3.png",
-                             "Backgrounds/bg4.png"])
+backgrounds = random.choice(["Backgrounds/bg1.png", "Backgrounds/bg2.png", "Backgrounds/bg3.jpg",
+                             "Backgrounds/bg4.png", "Backgrounds/bg5.jpg"])
+print(" Setting Background: ", backgrounds)
 background = pygame.image.load(path.join(img_folder, backgrounds)).convert()
 background_rect = background.get_rect()
-player_img = pygame.image.load(os.path.join(img_folder, "player11.png")).convert()
+players = random.choice(["Players/player1.png", "Players/player2.png", "Players/player3.png", "Players/player4.png",
+                         "Players/player5.png"])
+print("Player is: ", players)
+player_img = pygame.image.load(os.path.join(img_folder, players)).convert()
 player_mini_img = pygame.transform.scale(player_img, (25, 19))
 player_mini_img.set_colorkey(BLACK)
 # meteor_img = pygame.image.load(os.path.join(img_folder, "meteor1.png")).convert()
