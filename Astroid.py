@@ -1,4 +1,5 @@
 # Python Template
+
 import pygame
 import random
 import os
@@ -77,7 +78,7 @@ def show_goDisplay():
     screen.blit(background, background_rect)
     draw_text(screen, "Asteroids", 64, WIDTH/2, HEIGHT/4)
     draw_text(screen, "Arrow Keys Move, Space to Fire", 22,
-               WIDTH/2, HEIGHT/2)
+               WIDTH / 2, HEIGHT / 2)
     draw_text(screen, "Press a key to begin", 18, WIDTH/2, HEIGHT*3/4)
     pygame.display.flip()
     waiting = True
@@ -98,7 +99,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # Player Initialization
         self.image =pygame.transform.scale(player_img,(35, 35))  # Player Image
-        self.image.set_colorkey(BLACK)  # So that black boundries of player rect don't show
+        self.image.set_colorkey(BLACK)  # So that black boundaries of player rect don't show
         self.rect = self.image.get_rect()  # Initialization of player rect
         self.radius = int(self.rect.width/2 - 4)
         # pygame.draw.circle(self.image, RED, self.rect.center, self.radius)
@@ -106,7 +107,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT - 10
         self.x_speed= 0
         self.shield = 100
-        self.shoot_delay = 450
+        self.shoot_delay = 250
         self.last_shot = pygame.time.get_ticks()
         self.lives = 3
         self.hidden = False
@@ -192,12 +193,12 @@ class Mob(pygame.sprite.Sprite):
         self.image_orig.set_colorkey(BLACK)
         self.image = self.image_orig.copy()  # Copy of Original Image of Enemy so when rotating, the Original image doesn't get affected
         self.rect = self.image.get_rect()
-        self.radius = int(self.rect.width* .85/2)  # Radius of Circle
-        pygame.draw.circle(self.image, Olive , self.rect.center, self.radius)
+        self.radius = int(self.rect.width * .85/2)  # Radius of Circle
+        pygame.draw.circle(self.image, Olive, self.rect.center, self.radius)
         self.rect.x = random.randrange(0, WIDTH - self.rect.width)
         self.rect.y = random.randrange(-150, -100)
         self.y_speed = random.randrange(5, 10)
-        self.x_speed = random.randrange(-1,8)
+        self.x_speed = random.randrange(-1, 8)
         self.rot = 0
         self.rot_speed = random.randrange(-10, 10)  # Rotation speed Range
         self.last_update = pygame.time.get_ticks()
@@ -331,9 +332,9 @@ for i in range(9):
     filename = 'regularExplosion0{}.png'.format(i)
     img = pygame.image.load(path.join(explosion_folder, filename)).convert()
     img.set_colorkey(BLACK)
-    img_large = pygame.transform.scale(img, (75,75))
+    img_large = pygame.transform.scale(img, (75, 75))
     explosion_animation['large'].append(img_large)
-    img_small = pygame.transform.scale(img, (32,32))
+    img_small = pygame.transform.scale(img, (32, 32))
     explosion_animation['small'].append(img_small)
     filename = 'sonicExplosion0{}.png'.format(i)
     img = pygame.image.load(path.join(explosion_folder, filename)).convert()
