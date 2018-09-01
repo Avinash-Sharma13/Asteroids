@@ -32,7 +32,9 @@ img_folder = os.path.join(game_folder, ".\Assets\img")
 sound_folder = os.path.join(game_folder, ".\Assets\Sounds")
 explosion_folder = os.path.join(game_folder, ".\Assets\img\Explosions")
 asteroids_folder = os.path.join(game_folder, ".\Assets\img\Asteroids")
+
 # ---------------------------------Function Definitions-----------------------------------------------------------
+
 # Text draw on screen
 font_name = pygame.font.match_font("sitkasmallsitkatextsitkasubheadingsitkaheadingsitkadisplaysitkabanner")
 
@@ -96,7 +98,7 @@ def show_goDisplay():
 # Player Sprite
 class Player(pygame.sprite.Sprite):
     # Function for player self or body
-    def __init__(self):
+    def __init__(self):  # Player Settings
         pygame.sprite.Sprite.__init__(self)  # Player Initialization
         self.image =pygame.transform.scale(player_img,(35, 35))  # Player Image
         self.image.set_colorkey(BLACK)  # So that black boundaries of player rect don't show
@@ -105,9 +107,9 @@ class Player(pygame.sprite.Sprite):
         # pygame.draw.circle(self.image, RED, self.rect.center, self.radius)
         self.rect.centerx = WIDTH / 2
         self.rect.bottom = HEIGHT - 10
-        self.x_speed= 0
+        self.x_speed = 0
         self.shield = 100
-        self.shoot_delay = 250
+        self.shoot_delay = 500
         self.last_shot = pygame.time.get_ticks()
         self.lives = 3
         self.hidden = False
